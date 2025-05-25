@@ -1,49 +1,88 @@
 /* phac_styles.css - Basic styling for PHAC Generator Demo */
 
+:root {
+  --max-form-width: 800px;
+  --input-padding: 0.75rem;
+  --border-radius: 6px;
+  --primary-color: #4caf50;
+  --border-color: #ccc;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
   margin: 0;
-  padding: 2rem;
+  padding: 1rem;
   color: #333;
+  line-height: 1.5;
 }
 
 header {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 form {
   background: #fff;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: var(--max-form-width);
+  margin: 0 auto;
 }
 
 fieldset {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius);
+  background: #fafafa;
 }
 
 legend {
   font-weight: bold;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 input[type="text"],
 input[type="date"],
+input[type="number"],
+select,
 textarea {
   display: block;
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: var(--input-padding);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
 textarea {
@@ -52,13 +91,14 @@ textarea {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: var(--primary-color);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 button:hover {
@@ -68,7 +108,7 @@ button:hover {
 #clear-signature {
   background: none;
   border: none;
-  color: #007BFF;
+  color: #007bff;
   cursor: pointer;
   font-size: 0.9rem;
   padding: 0;
@@ -79,15 +119,84 @@ button:hover {
   margin-top: 2rem;
   padding: 1rem;
   background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: var(--max-form-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #signature-pad {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   background: #fff;
   height: 150px;
   margin-top: 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
+  width: 100%;
+}
+
+.produce-set {
+  background: #fff;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  fieldset {
+    padding: 1rem;
+  }
+
+  .input-group {
+    margin-bottom: 0.75rem;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .produce-set {
+    padding: 0.75rem;
+  }
+}
+
+/* Grid Layout for Related Fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Treatment Fields Styling */
+.treatment-fields {
+  background: #fff;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+/* Checkbox and Radio Styling */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }

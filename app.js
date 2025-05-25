@@ -45,3 +45,42 @@ document.addEventListener("DOMContentLoaded", () => {
     certifierFields.style.display = e.target.checked ? "none" : "block";
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const treatmentSelect = document.getElementById("treatmentSelect");
+  const liquidFields = document.getElementById("liquidTreatmentFields");
+  const granularFields = document.getElementById("granularTreatmentFields");
+
+  // Hide all treatment fields on initial load
+  if (liquidFields) liquidFields.style.display = "none";
+  if (granularFields) granularFields.style.display = "none";
+
+  // Listen for changes on the treatment type selector
+  if (treatmentSelect) {
+    treatmentSelect.addEventListener("change", (e) => {
+      const selected = e.target.value;
+
+      // Hide both sections before showing the selected one
+      liquidFields.style.display = "none";
+      granularFields.style.display = "none";
+
+      // Show the appropriate section based on user selection
+      if (selected === "liquid") {
+        liquidFields.style.display = "block";
+      } else if (selected === "granular") {
+        granularFields.style.display = "block";
+      }
+    });
+  }
+
+  // Optional: Logic for the 'Add Treatment/Condition' button can go here
+  const addTreatmentBtn = document.getElementById("addTreatment");
+  if (addTreatmentBtn) {
+    addTreatmentBtn.addEventListener("click", () => {
+      alert(
+        "Treatment details will be added to certificate (functionality to be implemented)"
+      );
+      // Future logic to collect the form data and append to certificate preview goes here
+    });
+  }
+});

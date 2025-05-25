@@ -6,135 +6,326 @@
     <title>PHAC Generator</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
   </head>
-  <body class="bg-gray-100 p-4">
+  <body>
     <!-- Header -->
-    <header class="text-xl font-bold mb-4">PHAC Generator</header>
+    <header>PHAC Generator</header>
 
     <!-- Certificate Form -->
-    <form id="phacForm" class="space-y-4">
+    <form id="phacForm">
       <!-- Consignment Details -->
-      <fieldset class="border p-4">
-        <legend class="font-semibold">Consignment Details</legend>
-        <input type="text" name="consignorName" placeholder="Consignor Name" class="input" required />
-        <textarea name="consignorAddress" placeholder="Consignor Address" class="input" required></textarea>
-        <input type="text" name="consigneeName" placeholder="Consignee Name" class="input" required />
-        <textarea name="consigneeAddress" placeholder="Consignee Address" class="input" required></textarea>
-        <label for="transportMethod">Transport Method</label>
-        <select name="transportMethod" id="transportMethod" class="input">
-          <option value="">Select method</option>
-          <option value="road">Road</option>
-          <option value="rail">Rail</option>
-          <option value="air">Air</option>
-          <option value="sea">Sea</option>
-        </select>
-        <input type="text" name="transportDetails" placeholder="Transport details (e.g., truck number)" class="input" />
-        <label><input type="checkbox" name="sameAsCertifier" checked /> Same as grower/accredited certifier</label>
+      <fieldset>
+        <legend>Consignment Details</legend>
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="consignorName"
+              >Consignor Name</label
+            >
+            <input
+              type="text"
+              id="consignorName"
+              name="consignorName"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="consigneeName"
+              >Consignee Name</label
+            >
+            <input
+              type="text"
+              id="consigneeName"
+              name="consigneeName"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="consignorAddress"
+            >Consignor Address</label
+          >
+          <textarea
+            id="consignorAddress"
+            name="consignorAddress"
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="consigneeAddress"
+            >Consignee Address</label
+          >
+          <textarea
+            id="consigneeAddress"
+            name="consigneeAddress"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="transportMethod"
+              >Transport Method</label
+            >
+            <select id="transportMethod" name="transportMethod" required>
+              <option value="">Select method</option>
+              <option value="road">Road</option>
+              <option value="rail">Rail</option>
+              <option value="air">Air</option>
+              <option value="sea">Sea</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="transportDetails"
+              >Transport Details</label
+            >
+            <input
+              type="text"
+              id="transportDetails"
+              name="transportDetails"
+              placeholder="e.g., truck number"
+            />
+          </div>
+        </div>
+
+        <div class="checkbox-label">
+          <input
+            type="checkbox"
+            id="sameAsCertifier"
+            name="sameAsCertifier"
+            checked
+          />
+          <label for="sameAsCertifier"
+            >Same as grower/accredited certifier</label
+          >
+        </div>
       </fieldset>
 
-<fieldset class="border p-4">
-  <legend class="font-semibold">Certification Details</legend>
-  <!-- Hidden by default unless 'sameAsCertifier' is unchecked -->
-  <div id="certifierFields">
-    <input type="text" name="certifierName" placeholder="Accredited Certifier Name" class="input" />
-    <textarea name="certifierAddress" placeholder="Accredited Certifier Address" class="input"></textarea>
-    <input type="text" name="growerName" placeholder="Grower Name" class="input" />
-    <textarea name="growerAddress" placeholder="Grower Address" class="input"></textarea>
-  </div>
+      <!-- Certification Details -->
+      <fieldset>
+        <legend>Certification Details</legend>
+        <div id="certifierFields" class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="certifierName"
+              >Accredited Certifier Name</label
+            >
+            <input type="text" id="certifierName" name="certifierName" />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="growerName">Grower Name</label>
+            <input type="text" id="growerName" name="growerName" />
+          </div>
+        </div>
 
-  <input type="text" name="ipNumber" placeholder="IP No. of Accredited Certifier (e.g., Q1234)" class="input" required />
-  <input type="text" name="brandName" placeholder="Brand Name or Identifying Marks (as marked on packages)" class="input" />
-  <input type="text" name="dateCode" placeholder="Date Code (as marked on packages)" class="input" />
-  <input type="number" name="facilityNumber" placeholder="Facility Number" class="input" />
-  <input type="text" name="procedureCode" placeholder="Procedure Code (e.g., ICA-39)" class="input" required />
-  <input type="date" name="accreditationExpiry" class="input" placeholder="Accreditation Expiry Date" />
+        <div class="input-group">
+          <label class="input-label" for="certifierAddress"
+            >Accredited Certifier Address</label
+          >
+          <textarea id="certifierAddress" name="certifierAddress"></textarea>
+        </div>
 
-  <button type="button" id="addAccreditation" class="bg-blue-500 text-white p-1 px-3 rounded text-sm">Add New Accreditation</button>
-</fieldset>
+        <div class="input-group">
+          <label class="input-label" for="growerAddress">Grower Address</label>
+          <textarea id="growerAddress" name="growerAddress"></textarea>
+        </div>
 
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="ipNumber">IP Number</label>
+            <input
+              type="text"
+              id="ipNumber"
+              name="ipNumber"
+              placeholder="e.g., Q1234"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="facilityNumber"
+              >Facility Number</label
+            >
+            <input type="number" id="facilityNumber" name="facilityNumber" />
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="brandName">Brand Name</label>
+            <input
+              type="text"
+              id="brandName"
+              name="brandName"
+              placeholder="Identifying marks on packages"
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="dateCode">Date Code</label>
+            <input
+              type="text"
+              id="dateCode"
+              name="dateCode"
+              placeholder="As marked on packages"
+            />
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="procedureCode"
+              >Procedure Code</label
+            >
+            <input
+              type="text"
+              id="procedureCode"
+              name="procedureCode"
+              placeholder="e.g., ICA-39"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="accreditationExpiry"
+              >Accreditation Expiry</label
+            >
+            <input
+              type="date"
+              id="accreditationExpiry"
+              name="accreditationExpiry"
+            />
+          </div>
+        </div>
+
+        <button type="button" id="addAccreditation">
+          Add New Accreditation
+        </button>
+      </fieldset>
 
       <!-- Treatment Details -->
-      <fieldset class="border p-4">
-  <legend class="font-semibold">Treatment or Condition</legend>
-  <!-- Main produce details -->
-<label><input type="checkbox" name="perAttachedList"> Per attached list</label>
-<input type="text" name="invoiceNumber" placeholder="Invoice Number (optional)" class="input" />
-<p style="margin: 1rem 0; font-weight: bold; text-align: center;">OR</p>
-<div id="produceEntries">
-  <div class="produce-set">
-    <input type="text" name="numberOfPackages[]" placeholder="Number of Packages" class="input" />
-    <input type="text" name="packageType[]" placeholder="Type of Packages (e.g., trays, cartons)" class="input" />
-    <input type="text" name="carrierType[]" placeholder="Type of Carrier of Biosecurity Matter" class="input" />
-  </div>
-</div>
-<button type="button" id="addProduceEntry" class="bg-blue-500 text-white text-sm p-1 px-3 rounded">+ Add Produce Row</button>
+      <fieldset>
+        <legend>Treatment or Condition</legend>
+        <div class="checkbox-label">
+          <input type="checkbox" id="perAttachedList" name="perAttachedList" />
+          <label for="perAttachedList">Per attached list</label>
+        </div>
 
+        <div class="input-group">
+          <label class="input-label" for="invoiceNumber"
+            >Invoice or Reference Number</label
+          >
+          <input type="text" id="invoiceNumber" name="invoiceNumber" />
+        </div>
 
-<!-- Treatment Table -->
-<div class="treatment-table" style="overflow-x:auto; margin-top: 1rem;">
-  <table style="width:100%; border-collapse: collapse;">
-    <thead>
-      <tr style="background:#f0f0f0; text-align:left;">
-        <th style="padding: 8px; border: 1px solid #ccc;">Date</th>
-        <th style="padding: 8px; border: 1px solid #ccc;">Treatment</th>
-        <th style="padding: 8px; border: 1px solid #ccc;">Chemical</th>
-        <th style="padding: 8px; border: 1px solid #ccc;">Concentration</th>
-        <th style="padding: 8px; border: 1px solid #ccc;">Duration</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="date" name="treatmentDate1" class="input" /></td>
-        <td><input type="text" name="treatmentType1" class="input" /></td>
-        <td><input type="text" name="chemical1" class="input" /></td>
-        <td><input type="text" name="concentration1" class="input" /></td>
-        <td><input type="text" name="duration1" class="input" /></td>
-      </tr>
-      <tr>
-        <td><input type="date" name="treatmentDate2" class="input" /></td>
-        <td><input type="text" name="treatmentType2" class="input" /></td>
-        <td><input type="text" name="concentration2" class="input" /></td>
-        <td><input type="text" name="duration2" class="input" /></td>
-      </tr>
-      <tr>
-        <td><input type="date" name="treatmentDate3" class="input" /></td>
-        <td><input type="text" name="treatmentType3" class="input" /></td>
-        <td><input type="text" name="chemical3" class="input" /></td>
-        <td><input type="text" name="concentration3" class="input" /></td>
-        <td><input type="text" name="duration3" class="input" /></td>
-      </tr>
-      <tr>
-        <td><input type="date" name="treatmentDate4" class="input" /></td>
-        <td><input type="text" name="treatmentType4" class="input" /></td>
-        <td><input type="text" name="chemical4" class="input" /></td>
-        <td><input type="text" name="concentration4" class="input" /></td>
-        <td><input type="text" name="duration4" class="input" /></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        <div class="treatment-fields">
+          <div id="produceEntries">
+            <div class="produce-set">
+              <div class="form-grid">
+                <div class="input-group">
+                  <label class="input-label">Number of Packages</label>
+                  <input type="number" name="numberOfPackages[]" />
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Package Type</label>
+                  <input
+                    type="text"
+                    name="packageType[]"
+                    placeholder="e.g., trays, cartons"
+                  />
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Carrier Type</label>
+                  <input type="text" name="carrierType[]" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="addProduceEntry">+ Add Produce Row</button>
+        </div>
 
+        <div class="treatment-fields">
+          <div class="input-group">
+            <label class="input-label" for="treatmentSelect"
+              >Treatment Type</label
+            >
+            <select id="treatmentSelect" name="treatmentSelect">
+              <option value="">-- Select --</option>
+              <option value="liquid">Liquid Insecticide Treatment</option>
+              <option value="granular">Granular Insecticide Treatment</option>
+            </select>
+          </div>
 
+          <div
+            id="liquidTreatmentFields"
+            class="treatment-fields"
+            style="display: none"
+          >
+            <div class="input-group">
+              <label class="input-label" for="liquidChemical"
+                >Liquid Chemical</label
+              >
+              <select id="liquidChemical" name="liquidChemical">
+                <option value="">Select Chemical</option>
+                <option>bifenthrin 80g/L 2.5ml/L 28 days</option>
+                <option>bifenthrin 100g/L 2ml/L 28 days</option>
+                <option>bifenthrin 240g/L 0.8ml/L 28 days</option>
+                <option>chrorpyrifos 500g/L 30-40ml/100L 28 days</option>
+                <option>betacyfluthrin 25g/L 16ml/10L 72 hours</option>
+              </select>
+            </div>
+          </div>
 
-  <!-- Additional certification -->
-  <textarea name="additionalCertification" placeholder="Additional Certification (e.g., free from fire ants)" class="input"></textarea>
-</fieldset>
+          <div
+            id="granularTreatmentFields"
+            class="treatment-fields"
+            style="display: none"
+          >
+            <div class="input-group">
+              <label class="input-label" for="granularChemical"
+                >Granular Chemical</label
+              >
+              <select id="granularChemical" name="granularChemical">
+                <option value="">Select Chemical</option>
+                <option>bifenthrin 2g/kg 10ppm 10ppm 6 months</option>
+                <option>bifenthrin 2g/kg 10ppm 12ppm 12 months</option>
+                <option>bifenthrin 2g/kg 10ppm 15ppm 24 months</option>
+                <option>chrorpyrifos 100g/kg 1kg/m3 12 months</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="additionalCertification"
+            >Additional Certification</label
+          >
+          <textarea
+            id="additionalCertification"
+            name="additionalCertification"
+            placeholder="e.g., free from fire ants"
+          ></textarea>
+        </div>
+      </fieldset>
 
       <!-- Signature -->
-      <fieldset class="border p-4">
-        <legend class="font-semibold">Declaration</legend>
-        <div id="signature-pad" class="border h-32"></div>
-        <button type="button" id="clear-signature" class="text-sm text-blue-600">Clear Signature</button>
-        <input type="date" name="issueDate" class="input" required />
+      <fieldset>
+        <legend>Declaration</legend>
+        <div class="input-group">
+          <label class="input-label">Signature</label>
+          <div id="signature-pad"></div>
+          <button type="button" id="clear-signature">Clear Signature</button>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="issueDate">Issue Date</label>
+          <input type="date" id="issueDate" name="issueDate" required />
+        </div>
       </fieldset>
 
       <!-- Submit Button -->
-      <button type="submit" class="bg-green-500 text-white p-2 rounded">Generate Certificate</button>
+      <button type="submit">Generate Certificate</button>
     </form>
 
-    <!-- Result / PDF Preview (optional) -->
-    <div id="pdfPreview" class="mt-6 hidden"></div>
+    <!-- Result / PDF Preview -->
+    <div id="pdfPreview" class="hidden"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
@@ -142,5 +333,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-
-
