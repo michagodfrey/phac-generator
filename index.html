@@ -12,16 +12,24 @@
     <!-- Header -->
     <header>PHAC Generator</header>
 
+    <!-- Temporary Test Button -->
+    <div class="test-controls">
+      <button type="button" id="fillDummyData" class="test-button">
+        Fill with Test Data
+      </button>
+    </div>
+
     <!-- Certificate Form -->
     <form id="phacForm">
       <!-- Consignment Details -->
       <fieldset>
         <legend>Consignment Details</legend>
-        <div class="form-grid">
+
+        <!-- Consignor Section -->
+        <div class="consignment-group">
+          <h3 class="section-title">Consignor Details</h3>
           <div class="input-group">
-            <label class="input-label" for="consignorName"
-              >Consignor Name</label
-            >
+            <label class="input-label" for="consignorName">Name</label>
             <input
               type="text"
               id="consignorName"
@@ -30,9 +38,20 @@
             />
           </div>
           <div class="input-group">
-            <label class="input-label" for="consigneeName"
-              >Consignee Name</label
-            >
+            <label class="input-label" for="consignorAddress">Address</label>
+            <textarea
+              id="consignorAddress"
+              name="consignorAddress"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Consignee Section -->
+        <div class="consignment-group">
+          <h3 class="section-title">Consignee Details</h3>
+          <div class="input-group">
+            <label class="input-label" for="consigneeName">Name</label>
             <input
               type="text"
               id="consigneeName"
@@ -40,28 +59,14 @@
               required
             />
           </div>
-        </div>
-
-        <div class="input-group">
-          <label class="input-label" for="consignorAddress"
-            >Consignor Address</label
-          >
-          <textarea
-            id="consignorAddress"
-            name="consignorAddress"
-            required
-          ></textarea>
-        </div>
-
-        <div class="input-group">
-          <label class="input-label" for="consigneeAddress"
-            >Consignee Address</label
-          >
-          <textarea
-            id="consigneeAddress"
-            name="consigneeAddress"
-            required
-          ></textarea>
+          <div class="input-group">
+            <label class="input-label" for="consigneeAddress">Address</label>
+            <textarea
+              id="consigneeAddress"
+              name="consigneeAddress"
+              required
+            ></textarea>
+          </div>
         </div>
 
         <div class="form-grid">
@@ -106,29 +111,50 @@
       <!-- Certification Details -->
       <fieldset>
         <legend>Certification Details</legend>
-        <div id="certifierFields" class="form-grid">
-          <div class="input-group">
-            <label class="input-label" for="certifierName"
-              >Accredited Certifier Name</label
-            >
-            <input type="text" id="certifierName" name="certifierName" />
-          </div>
-          <div class="input-group">
-            <label class="input-label" for="growerName">Grower Name</label>
-            <input type="text" id="growerName" name="growerName" />
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label class="input-label" for="certifierAddress"
-            >Accredited Certifier Address</label
+        <div class="conditional-section">
+          <div
+            id="certifierFields"
+            class="consignment-group conditional-fields"
+            style="display: none"
           >
-          <textarea id="certifierAddress" name="certifierAddress"></textarea>
-        </div>
+            <p class="conditional-text">
+              To be completed if different to the consignor
+            </p>
+            <!-- Certifier Details -->
+            <div class="form-grid">
+              <div class="input-group">
+                <label class="input-label" for="certifierName"
+                  >Accredited Certifier Name</label
+                >
+                <input type="text" id="certifierName" name="certifierName" />
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="certifierAddress"
+                  >Accredited Certifier Address</label
+                >
+                <textarea
+                  id="certifierAddress"
+                  name="certifierAddress"
+                ></textarea>
+              </div>
+            </div>
 
-        <div class="input-group">
-          <label class="input-label" for="growerAddress">Grower Address</label>
-          <textarea id="growerAddress" name="growerAddress"></textarea>
+            <!-- Grower Details -->
+            <div class="form-grid">
+              <div class="input-group">
+                <label class="input-label" for="growerName"
+                  >Grower or Packer Name</label
+                >
+                <input type="text" id="growerName" name="growerName" />
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="growerAddress"
+                  >Grower or Packer Address</label
+                >
+                <textarea id="growerAddress" name="growerAddress"></textarea>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="form-grid">
@@ -197,7 +223,7 @@
         </div>
 
         <button type="button" id="addAccreditation">
-          Add New Accreditation
+          Add Additional Accreditation
         </button>
       </fieldset>
 
@@ -301,7 +327,7 @@
           <textarea
             id="additionalCertification"
             name="additionalCertification"
-            placeholder="e.g., free from fire ants"
+            placeholder="e.g., Meets ICA-39"
           ></textarea>
         </div>
       </fieldset>
@@ -309,11 +335,32 @@
       <!-- Signature -->
       <fieldset>
         <legend>Declaration</legend>
+
+        <div class="declaration-text">
+          <p>
+            I, an Authorised Signatory of the accredited certifier that prepared
+            the Carrier of Biosecurity Matter described above, hereby declare
+            that the Carrier of Biosecurity Matter have been prepared in the
+            accredited certifier's approved facilities in accordance with the
+            accreditation(s) granted to the accredited certifier under the
+            Biosecurity Act 2014 and that the details shown above are true and
+            correct in every particular.
+          </p>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="signatoryName"
+            >Authorised Signatory's Name</label
+          >
+          <input type="text" id="signatoryName" name="signatoryName" required />
+        </div>
+
         <div class="input-group">
           <label class="input-label">Signature</label>
           <div id="signature-pad"></div>
           <button type="button" id="clear-signature">Clear Signature</button>
         </div>
+
         <div class="input-group">
           <label class="input-label" for="issueDate">Issue Date</label>
           <input type="date" id="issueDate" name="issueDate" required />

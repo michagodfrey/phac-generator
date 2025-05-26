@@ -200,3 +200,159 @@ input[type="radio"] {
   align-items: center;
   margin-bottom: 0.5rem;
 }
+
+/* Consignment Groups */
+.consignment-group {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Adjust spacing for the groups */
+.consignment-group .input-group {
+  margin-bottom: 1rem;
+}
+
+.consignment-group .input-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .consignment-group {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+}
+
+/* Conditional Fields Styling */
+.conditional-section {
+  margin: 1rem 0;
+}
+
+.conditional-text {
+  color: #2c3e50;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.conditional-fields {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.conditional-fields:not([style*="display: none"]) {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+/* Remove the optional fields styling since we're not using it anymore */
+.optional-fields,
+.optional-badge {
+  display: none;
+}
+
+/* Additional Accreditation Styling */
+.accreditation-block {
+  margin: 1.5rem 0;
+}
+
+.remove-accreditation {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.remove-accreditation:hover {
+  background-color: #c82333;
+}
+
+/* Button States */
+button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+button.disabled:hover {
+  background-color: #ccc;
+}
+
+/* Produce Entry Styling */
+.remove-produce {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.remove-produce:hover {
+  background-color: #c82333;
+}
+
+/* Declaration Text Styling */
+.declaration-text {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.declaration-text p {
+  margin: 0;
+  line-height: 1.6;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+/* Test Controls */
+.test-controls {
+  max-width: var(--max-form-width);
+  margin: 0 auto 1rem auto;
+  text-align: right;
+}
+
+.test-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.test-button:hover {
+  background-color: #5a6268;
+}
