@@ -356,3 +356,8 @@ button.disabled:hover {
 .test-button:hover {
   background-color: #5a6268;
 }
+
+.or-separator {
+  font-size: 1.2em;
+  letter-spacing: 0.2em;
+}

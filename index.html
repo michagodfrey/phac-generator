@@ -227,48 +227,51 @@
         </button>
       </fieldset>
 
-      <!-- Treatment Details -->
+      <!-- Carrier Details -->
       <fieldset>
-        <legend>Treatment or Condition</legend>
+        <legend>Carrier Details</legend>
         <div class="checkbox-label">
-          <input type="checkbox" id="perAttachedList" name="perAttachedList" />
+          <input
+            type="checkbox"
+            id="perAttachedList"
+            name="perAttachedList"
+            checked
+          />
           <label for="perAttachedList">Per attached list</label>
         </div>
 
-        <div class="input-group">
+        <div id="invoiceGroup" class="input-group">
           <label class="input-label" for="invoiceNumber"
             >Invoice or Reference Number</label
           >
-          <input type="text" id="invoiceNumber" name="invoiceNumber" />
+          <input type="text" id="invoiceNumber" name="invoiceNumber" required />
+        </div>
+
+        <div
+          class="or-separator"
+          style="text-align: center; margin: 1em 0; font-weight: bold"
+        >
+          OR
         </div>
 
         <div class="treatment-fields">
-          <div id="produceEntries">
-            <div class="produce-set">
-              <div class="form-grid">
-                <div class="input-group">
-                  <label class="input-label">Number of Packages</label>
-                  <input type="number" name="numberOfPackages[]" />
-                </div>
-                <div class="input-group">
-                  <label class="input-label">Package Type</label>
-                  <input
-                    type="text"
-                    name="packageType[]"
-                    placeholder="e.g., trays, cartons"
-                  />
-                </div>
-                <div class="input-group">
-                  <label class="input-label">Carrier Type</label>
-                  <input type="text" name="carrierType[]" />
-                </div>
-              </div>
-            </div>
+          <div id="produceEntries"></div>
+          <button type="button" id="addProduceEntry" >
+            + Add Produce Row
+          </button>
+        </div>
+      </fieldset>
+
+      <!-- Treatment Details -->
+      <fieldset>
+        <legend>Treatment Details</legend>
+        <div class="treatment-fields">
+          <div class="input-group">
+            <label class="input-label" for="treatmentDate"
+              >Treatment Date</label
+            >
+            <input type="date" id="treatmentDate" name="treatmentDate" />
           </div>
-          <button type="button" id="addProduceEntry">+ Add Produce Row</button>
-        </div>
-
-        <div class="treatment-fields">
           <div class="input-group">
             <label class="input-label" for="treatmentSelect"
               >Treatment Type</label
@@ -311,9 +314,9 @@
               >
               <select id="granularChemical" name="granularChemical">
                 <option value="">Select Chemical</option>
-                <option>bifenthrin 2g/kg 10ppm 10ppm 6 months</option>
-                <option>bifenthrin 2g/kg 10ppm 12ppm 12 months</option>
-                <option>bifenthrin 2g/kg 10ppm 15ppm 24 months</option>
+                <option>bifenthrin 2g/kg 10ppm 6 months</option>
+                <option>bifenthrin 2g/kg 12ppm 12 months</option>
+                <option>bifenthrin 2g/kg 15ppm 24 months</option>
                 <option>chrorpyrifos 100g/kg 1kg/m3 12 months</option>
               </select>
             </div>
@@ -368,7 +371,7 @@
       </fieldset>
 
       <!-- Submit Button -->
-      <button type="submit">Generate Certificate</button>
+      <button type="submit" id="generatePDFBtn">Generate Certificate</button>
     </form>
 
     <!-- Result / PDF Preview -->
@@ -377,6 +380,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
