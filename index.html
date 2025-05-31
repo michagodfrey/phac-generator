@@ -187,7 +187,7 @@
             />
           </div>
           <div class="input-group">
-            <label class="input-label" for="dateCode">Date Code</label>
+            <label class="input-label" for="dateCode">Date Code (as marked on packages)</label>
             <input
               type="text"
               id="dateCode"
@@ -251,7 +251,7 @@
           class="or-separator"
           style="text-align: center; margin: 1em 0; font-weight: bold"
         >
-          OR
+          AND / OR
         </div>
 
         <div class="treatment-fields">
@@ -265,64 +265,13 @@
       <!-- Treatment Details -->
       <fieldset>
         <legend>Treatment Details</legend>
-        <div class="treatment-fields">
-          <div class="input-group">
-            <label class="input-label" for="treatmentDate"
-              >Treatment Date</label
-            >
-            <input type="date" id="treatmentDate" name="treatmentDate" />
-          </div>
-          <div class="input-group">
-            <label class="input-label" for="treatmentSelect"
-              >Treatment Type</label
-            >
-            <select id="treatmentSelect" name="treatmentSelect">
-              <option value="">-- Select --</option>
-              <option value="liquid">Liquid Insecticide Treatment</option>
-              <option value="granular">Granular Insecticide Treatment</option>
-            </select>
-          </div>
+        <div id="treatmentList"></div>
+        <button type="button" id="addTreatmentBtn">+ Add Treatment</button>
+      </fieldset>
 
-          <div
-            id="liquidTreatmentFields"
-            class="treatment-fields"
-            style="display: none"
-          >
-            <div class="input-group">
-              <label class="input-label" for="liquidChemical"
-                >Liquid Chemical</label
-              >
-              <select id="liquidChemical" name="liquidChemical">
-                <option value="">Select Chemical</option>
-                <option>bifenthrin 80g/L 2.5ml/L 28 days</option>
-                <option>bifenthrin 100g/L 2ml/L 28 days</option>
-                <option>bifenthrin 240g/L 0.8ml/L 28 days</option>
-                <option>chrorpyrifos 500g/L 30-40ml/100L 28 days</option>
-                <option>betacyfluthrin 25g/L 16ml/10L 72 hours</option>
-              </select>
-            </div>
-          </div>
-
-          <div
-            id="granularTreatmentFields"
-            class="treatment-fields"
-            style="display: none"
-          >
-            <div class="input-group">
-              <label class="input-label" for="granularChemical"
-                >Granular Chemical</label
-              >
-              <select id="granularChemical" name="granularChemical">
-                <option value="">Select Chemical</option>
-                <option>bifenthrin 2g/kg 10ppm 6 months</option>
-                <option>bifenthrin 2g/kg 12ppm 12 months</option>
-                <option>bifenthrin 2g/kg 15ppm 24 months</option>
-                <option>chrorpyrifos 100g/kg 1kg/m3 12 months</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
+      <!-- Additional Certification -->
+      <fieldset>
+        <legend>Additional Certification</legend>
         <div class="input-group">
           <label class="input-label" for="additionalCertification"
             >Additional Certification</label
@@ -381,6 +330,8 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="app.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/test_data.js"></script>
+    <script src="scripts/pdf_generation.js"></script>
   </body>
 </html>

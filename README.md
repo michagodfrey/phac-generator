@@ -30,4 +30,4 @@ A modern web-based demo application for generating Plant Health Assurance Certif
 
 - `index.html` - Main application interface
 - `style.css` - Styling and layout
-- `app.js` - Application logic
+- `/scripts` - Application logic
